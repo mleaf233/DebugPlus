@@ -615,6 +615,7 @@ local function hyjackErrorHandler()
     end
     function love.errorhandler(msg)
         local ret = orig(msg)
+        if not ret or type(ret) ~= "function" then return ret end
         orig_wheelmoved = nil
         orig_textinput = nil
         orig_keypressed = nil
