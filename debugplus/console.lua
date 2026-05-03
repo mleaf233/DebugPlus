@@ -83,19 +83,19 @@ commands = {{
             return "Syntax Error: " .. err, "ERROR"
         end
         local res = util.pack(pcall(func))
-        local success = table.remove(res, 1)
+        local success = res[1]
         res.n = res.n - 1
         local resString = ""
         if res.n > 1 then
             for k = 1, res.n do
-                local v = res[k]
+                local v = res[k + 1]
                 if k ~= 1 then
                     resString = resString .. ", "
                 end
                 resString = resString .. util.stringifyTable(v)
             end
         else
-            resString = util.stringifyTable(res[1])
+            resString = util.stringifyTable(res[2])
         end
         if not success then
             return "Error: " .. resString, "ERROR"
