@@ -1,16 +1,15 @@
 #!/bin/bash
 
 VERSION=$1
+tmp="$(mktemp -u)"
 
 if [ -z "$VERSION" ]; then
     echo "Usage: $0 <version>"
     exit 1
 fi
 
-rm DebugPlus.zip 2>/dev/null
-
-sed -i 's/"version": ".*"/"version": "'"$VERSION"'"/' smods.json
-zip -r ./DebugPlus.zip lovely/ assets/ debugplus README.MD *.txt docs/ smods.json
+jq '.version = "'$VERSION'"' smods.json > $tmp && mv $tmp smods.json
+./makezip.sh DebugPlus.zip
 
 echo "Zip made for v$VERSION!"
 echo
@@ -26,3 +25,4 @@ echo "- Make a release with title 'DebugPlus v$VERSION' and desc as the changelo
 echo "  - https://github.com/WilsontheWolf/DebugPlus/releases/new?tag=v$VERSION&title=DebugPlus%20v$VERSION"
 echo "  - Don't forget to upload zip"
 echo "- Change version after release so you don't have dev versions with the same build version!"
+echo "- Thunderstore the bad boy (makethunderstore.sh)."
