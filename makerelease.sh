@@ -9,7 +9,7 @@ if [ -z "$VERSION" ]; then
 fi
 
 jq '.version = "'$VERSION'"' smods.json > $tmp && mv $tmp smods.json
-./makezip.sh DebugPlus.zip
+./dev/makezip.sh DebugPlus.zip
 
 echo "Zip made for v$VERSION!"
 echo

@@ -11,7 +11,7 @@ if ! [[ $version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
 fi
 
 echo $version
-./makezip.sh thunderstore.zip
+./dev/makezip.sh thunderstore.zip
 
 convert assets/1x/modicon.png -filter point -resize 256x256! "$tmp/icon.png"
 jq --arg n "$id" \
@@ -24,5 +24,5 @@ zip -j thunderstore.zip $tmp/*
 
 rm -rf "$tmp"
 
-echo "Remember to update me with instructions once you do this"
 echo "Remember to update the lovely version in the dependancies"
+echo "Upload me: https://thunderstore.io/package/create/"

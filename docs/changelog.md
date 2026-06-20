@@ -1,3 +1,11 @@
+# DebugPlus 1.5.3
+
+DebugPlus is now on [Thunderstore](https://thunderstore.io/c/balatro/p/WilsontheWolf/DebugPlus)! Check it out, maybe even give it a like.
+
+## Fixes
+- Fixed a bug where when nil was returned in eval, any argument after it was displayed as nil
+- Fixed a crash with specific error handlers when hyjacked
+
 # DebugPlus 1.5.2
 
 ## Fixes
@@ -6,7 +14,7 @@
 - Fixed an issue where the console could not be opened if the Show New Logs config option was off when started up
 - Fixed some perfomance issues related to large history files
 - Fixed an issue where the console text input would use the wrong font if something loaded the api too early
-- Load logging hooks later to catch logs from newer SMODS preflight
+- Load logging hooks earlier to catch logs from newer SMODS preflight
 
 # DebugPlus 1.5.1
 
